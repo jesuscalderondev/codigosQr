@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+	<script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+	<script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+	<script src="{{url_for('static', filename='js/bootstrap.esm.min.js')}}"></script>
+	<script src="{{url_for('static', filename='icons/js/all.min.js')}}"></script>
+	<title>Inicio</title>
+</head>
+
+<body class="bg-ligth">
+	<header>
+		<nav class="navbar navbar-dark bg-dark shadow-lg">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">
+					<img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24"
+						class="d-inline-block align-text-top">
+					Syste+
+				</a>
+			</div>
+		</nav>
+	</header>
+
+	<main class="d-flex">
+		<div class="bg-ligth register shadow-lg">
+			<h2 class="display-6">REGISTRO DE USUARIO</h2>
+			<hr>
+			<form action="/registrar" method="post">
+				<div class="input-group flex-nowrap mb-3">
+					<span class="input-group-text" id="addon-wrapping"><i class="fa fa-solid fa-user"></i></span>
+					<input type="text" class="form-control" placeholder="Nombre Completo">
+				</div>
+
+				<div class="input-group flex-nowrap mb-3">
+					<span class="input-group-text" id="addon-wrapping"><i class="fa fa-solid fa-envelope"></i></span>
+					<input type="mail" class="form-control" placeholder="Correo institucional" aria-label="Username"
+						aria-describedby="addon-wrapping">
+				</div>
+
+				<select class="form-select mb-3" aria-label="Default select example">
+					<option selected disabled>Selecciona tu facultad</option>
+					<option value="Ing">Ingeniería</option>
+					<option value="Emp">Empresarial</option>
+					<option value="Med">Medicina</option>
+					<option value="Human">Humanidades</option>
+				</select>
+
+				<button type="submit" class="btn btn-primary"><i class="fa fa-solid fa-paper-plane"></i> Solicitar registro</button>
+			</form>
+		</div>
+
+		<div class="login"></div>
+	</main>
+
+</body>
+
+<script>
+
+</script>
+
+</html>

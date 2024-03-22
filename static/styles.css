@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 250px;
+}
+
+.register{
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+.login{
+    flex: 2;
+}
