@@ -1,0 +1,33 @@
+{% extends 'plantilla.html' %}
+
+{% block title %}Inicio{% endblock %}
+{% block body %}
+
+
+<div class="container-sm text-center rounded">
+    <h2 class="display-2 text-center">¡Bienvenid@!</h2>
+    <img src="{{url_for('static', filename='img/qr.png')}}" width="300px" height="300px" class="mb-3">
+
+    <div class="buttons">
+        <button class="btn btn-success" id="download"><i class="fa fa-solid fa-download"></i> Descargar</button>
+        <button class="btn btn-danger" id="generate"><i class="fa fa-solid fa-rotate-right"></i> Generar nuevo QR</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    var download = document.querySelector("#download");
+
+    download.addEventListener("click", () => {
+        window.location.href = "/download/qr";
+    })
+
+
+    var generate = document.querySelector("#generate");
+
+    generate.addEventListener("click", () => {
+        window.location.href = "/generate/qr";
+    })
+</script>
+{% endblock %}
