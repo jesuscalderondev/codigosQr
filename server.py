@@ -6,13 +6,6 @@ from database import *
 
 app = Flask("QR UNIMAG")
 
-app.config['MAIL_SERVER'] = getenv("MAIL_SERVER")
-app.config['MAIL_PORT'] = getenv("MAIL_PORT")
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USE_SLS'] = False
-app.config['MAIL_USERNAME'] = getenv("MAIL_USERNAME")
-app.config['MAIL_PASSWORD'] = getenv("MAIL_PASSWORD")
-
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -28,7 +21,7 @@ def generateQr():
     session.add(code)
     session.commit()
 
-    txt = f'https://google.com/{code}'
+    txt = f'https://codigosqr-dev-qgkm.4.us-1.fl0.io/verify/{code}'
     qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=7, border=2)
     qr.add_data(txt)
     qr.make(fit=True)
@@ -46,7 +39,7 @@ def downloadQr():
 @app.route("/verify/<string:code>")
 def verifyCode(code):
     
-    qr = session.query(Codigo).filter(Codigo.id.like(f'%{code}%')).first()
+    qr = session.query(Codigo).filter(Codigo.id == code).first()
 
     condition = qr != None and qr.usado == 0
     

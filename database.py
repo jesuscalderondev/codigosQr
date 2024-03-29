@@ -1,4 +1,4 @@
-from sqlalchemy import TEXT, Integer, Column
+from sqlalchemy import String, Boolean, Column, Uuid
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 from uuid import uuid4
@@ -16,9 +16,9 @@ class Codigo(Base):
 
     __tablename__ = "codigos_qr"
 
-    id = Column(TEXT, nullable= False, primary_key=True)
-    usado = Column(Integer, nullable=False)
+    id = Column(String, nullable= False, primary_key=True)
+    usado = Column(Boolean, nullable=False)
 
     def __init__(self):
         self.id = str(uuid4())
-        self.usado = 0
+        self.usado = False
