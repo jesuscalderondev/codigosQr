@@ -2,32 +2,6 @@
 
 {% block title %}Login{% endblock %}
 {% block body %}
-<div class="register rounded">
-    <h2 class="display-6">REGISTRO DE USUARIO</h2>
-    <hr>
-    <form id="register">
-        <div class="input-group flex-nowrap mb-3">
-            <span class="input-group-text" id="addon-wrapping"><i class="fa fa-regular fa-user"></i></span>
-            <input type="text" class="form-control" placeholder="Nombre Completo" name="fullanme">
-        </div>
-
-        <div class="input-group flex-nowrap mb-3">
-            <span class="input-group-text" id="addon-wrapping"><i class="fa fa-regular fa-envelope"></i></span>
-            <input type="mail" class="form-control" placeholder="Correo institucional" aria-label="Username"
-                aria-describedby="addon-wrapping" name="email">
-        </div>
-
-        <select class="form-select mb-3" aria-label="Default select example" name="fac">
-            <option selected disabled>Selecciona tu facultad</option>
-            <option value="Ing">Ingeniería</option>
-            <option value="Emp">Empresarial</option>
-            <option value="Med">Medicina</option>
-            <option value="Human">Humanidades</option>
-        </select>
-
-        <button type="submit" class="btn btn-primary" id="submit"><i class='fa fa-regular fa-paper-plane'></i></button>
-    </form>
-</div>
 
 <div class="login rounded">
     <h2 class="display-6">Inicio de sesión</h2>
@@ -52,24 +26,10 @@
 
 {% block script %}
 <script>
-    var submit = document.getElementById("submit");
-    console.log(submit);
 
     const iconPaper = "<i class='fa fa-regular fa-paper-plane'></i>"
     const iconLock = "<i class='fa fa-solid fa-lock'></i>"
     const iconLockOpen = "<i class='fa fa-solid fa-lock-open'></i>"
-
-    submit.addEventListener("mouseover", () => {
-        submit.innerHTML = iconPaper + " Enviar";
-        submit.style.transition = "width .2s ease-out";
-        submit.style.width = "150px";
-    });
-
-    submit.addEventListener("mouseout", () => {
-        submit.innerHTML = iconPaper;
-        submit.style.transition = "width .5s ease-out";
-        submit.style.width = "40px";
-    });
 
     var lock = document.getElementById("submitLogin");
 
