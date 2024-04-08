@@ -18,7 +18,11 @@ class Codigo(Base):
 
     id = Column(String, nullable= False, primary_key=True)
     usado = Column(Boolean, nullable=False)
+    boleto = Column(String, nullable=False)
+    vendido = Column(Boolean, nullable=False)
 
-    def __init__(self):
+    def __init__(self, boleto):
         self.id = str(uuid4())
         self.usado = False
+        self.boleto = boleto
+        self.vendido = False
