@@ -6,21 +6,21 @@
 <div class="login rounded">
     <h2 class="display-6">Inicio de sesión</h2>
     <hr>
-    <form id="login">
+    <form id="login" method="post" action="/login">
         <div class="input-group flex-nowrap mb-3">
             <span class="input-group-text" id="addon-wrapping"><i class="fa fa-solid fa-envelope"></i></span>
-            <input type="mail" class="form-control" placeholder="Correo institucional" aria-label="Username"
-                aria-describedby="addon-wrapping">
+            <input type="email" class="form-control" placeholder="Correo institucional" aria-label="Username"
+                aria-describedby="addon-wrapping" required name="email">
         </div>
         <div class="input-group flex-nowrap mb-3">
             <span class="input-group-text" id="addon-wrapping"><i class="fa fa-solid fa-lock-open"></i></span>
             <input type="password" class="form-control" placeholder="Contraseña" aria-label="Username"
-                aria-describedby="addon-wrapping">
+                aria-describedby="addon-wrapping" required name="password">
         </div>
 
-
+        <button type="submit" class="btn btn-primary" id="submitLogin"><i class='fa fa-solid fa-lock'></i></button>
     </form>
-    <button type="submit" class="btn btn-primary" id="submitLogin"><i class='fa fa-solid fa-lock'></i></button>
+
 </div>
 {% endblock %}
 
@@ -43,9 +43,6 @@
         lock.style.transition = "width .5s ease-out";
     });
 
-    lock.addEventListener("click", () => {
-        window.location.href = "/home";
-    })
 
 </script>
 {% endblock %}
