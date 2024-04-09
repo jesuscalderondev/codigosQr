@@ -55,7 +55,7 @@ def generar():
 def verifyQr(qr):
 
     if validateSession():
-        code = session.get(Codigo, qr)
+        code = session.query(Codigo).filter(Codigo.id == qr).first()
 
         if code != None and code.usado == False:
             code.usado = True

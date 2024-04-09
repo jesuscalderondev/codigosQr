@@ -16,13 +16,12 @@ class Codigo(Base):
 
     __tablename__ = "Codigos"
 
-    id = Column(String, nullable= False, primary_key=True)
+    boleto = Column(Integer, nullable=False, primary_key=True ,autoincrement=True)
+    id = Column(String, nullable= False)
     usado = Column(Boolean, nullable=False)
-    boleto = Column(String, nullable=False)
-    vendido = Column(Boolean, nullable=False)
+    
 
-    def __init__(self, boleto):
+    def __init__(self):
         self.id = str(uuid4())
         self.usado = False
-        self.boleto = boleto
-        self.vendido = False
+        self.boleto = session.query(Codigo).count() + 1
