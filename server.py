@@ -9,7 +9,7 @@ from flask import session as cloud
 
 from pdfGeneratorCh import Generator
 
-app = Flask("QR UNIMAG")
+app = Flask(__name__)
 
 app.config['SECRET_KEY']= getenv('SECRET_KEY')
 
