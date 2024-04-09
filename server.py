@@ -37,7 +37,7 @@ def generar():
     try:
         data = request.get_json()
         Generator(int(data["tickets"]))
-        sendMessage(mail, data['email'], data['fullname'])
+        #sendMessage(mail, data['email'], data['fullname'])
         return jsonify(response = "success", message = "Código(s) envíados al destinatario")
     except Exception as e:
         print(e)
@@ -54,6 +54,11 @@ def verifyQr(qr):
 
         return f"Boleto #{code.boleto} válido"
     return "Este boleto no es válido para el ingreso"
+
+
+@app.route("/copy/database")
+def copyDatabase():
+    return send_file("database.db")
 
         
 if __name__ == "__main__":
