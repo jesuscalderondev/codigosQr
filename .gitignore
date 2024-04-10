@@ -2,7 +2,6 @@
 .env
 /static/css
 /static/icons
-/qrs
 /__pycache__
 archivo.pdf
 database.db

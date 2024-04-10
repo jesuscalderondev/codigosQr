@@ -6,6 +6,7 @@ from flask_mail import Mail
 from mailManager import sendMessage
 from dotenv import load_dotenv
 from flask import session as cloud
+import os
 
 from pdfGeneratorCh import Generator
 
@@ -43,7 +44,11 @@ def generar():
     if validateSession():
         try:
             data = request.get_json()
-            Generator(int(data["tickets"]))
+            qrs = Generator(int(data["tickets"]), data['ticket']).generatePdf()
+
+            for file in qrs:
+                os.remove(os.path.join("", file))
+                
             #sendMessage(mail, data['email'], data['fullname'])
             return jsonify(response = "success", message = "Código(s) envíados al destinatario")
         except Exception as e:
@@ -54,16 +59,19 @@ def generar():
 @app.route("/scan/<string:qr>")
 def verifyQr(qr):
 
-    if validateSession():
-        code = session.query(Codigo).filter(Codigo.id == qr).first()
+    code = session.query(Codigo).filter(Codigo.id == qr).first()
 
-        if code != None and code.usado == False:
-            code.usado = True
-            session.add(code)
-            session.commit()
+    if code != None and code.usado == False:
+        code.usado = True
+        session.add(code)
+        session.commit()
 
-            return f"Boleto #{code.boleto} válido"
-    return "Este boleto no es válido para el ingreso"
+        message = f"Boleto #{code.boleto} normal, acceso permitido" if code.vip == False else f"Boleto #{code.boleto} V.I.P dile al cliente que reclame su extra"
+
+        return jsonify(status = "válido", message = message)
+    
+    message = "El código no está registrado en plataforma" if code == None else f"El boleto #{code.boleto} ya fue usado"
+    return jsonify(status = "inválido", message = message)
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -82,7 +90,7 @@ def copyDatabase():
     if validateSession():
         return send_file("database.db")
     else:
-        return "Nooo"
+        return "Operación denegada"
 
         
 if __name__ == "__main__":

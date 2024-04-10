@@ -19,9 +19,11 @@ class Codigo(Base):
     boleto = Column(Integer, nullable=False, primary_key=True ,autoincrement=True)
     id = Column(String, nullable= False)
     usado = Column(Boolean, nullable=False)
+    vip = Column(Boolean, nullable = False)
     
 
-    def __init__(self):
+    def __init__(self, vip=False):
         self.id = str(uuid4())
         self.usado = False
         self.boleto = session.query(Codigo).count() + 1
+        self.vip = vip
